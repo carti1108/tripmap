@@ -1,15 +1,15 @@
 "use client";
 import { useState } from "react";
-import { PromptInputBox } from "@/components/ui/ai-prompt-box";
-import type { ChatRequest, ChatResponse } from "@/lib/contracts";
+import { TripChatBar } from "@/components/trip/trip-chat-bar";
+import type { ChatRequest, ChatResponse, ChatToggle } from "@/lib/contracts";
 
 export function HomeDemo() {
   const [loading, setLoading] = useState(false);
   const [reply, setReply] = useState<ChatResponse | null>(null);
 
-  async function send(message: string) {
+  async function send(message: string, toggles: ChatToggle[]) {
     setLoading(true);
-    const body: ChatRequest = { message, toggles: [], history: [] };
+    const body: ChatRequest = { message, toggles, history: [] };
     try {
       const res = await fetch("/api/chat", { method: "POST", body: JSON.stringify(body) });
       setReply((await res.json()) as ChatResponse);
@@ -40,11 +40,7 @@ export function HomeDemo() {
         )}
       </section>
       <div className="w-full max-w-[430px]">
-        <PromptInputBox
-          isLoading={loading}
-          placeholder="예) 토요일 홍대 친구 3명 무서운 거"
-          onSend={(m) => send(m)}
-        />
+        <TripChatBar isLoading={loading} onSend={send} />
       </div>
     </main>
   );
