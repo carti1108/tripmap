@@ -29,8 +29,14 @@ export function HomeHero({ onPickChip }: { onPickChip: (text: string) => void })
       </span>
 
       <div>
-        <h1 className="text-4xl font-black leading-tight tracking-tight text-[var(--color-primary)]">
-          트릭 오어 트립
+        <h1
+          aria-label="TRICK or TRIP"
+          className="flex items-baseline gap-[0.3em] leading-none"
+          style={{ fontFamily: "'Tanker', system-ui, sans-serif", fontWeight: 400 }}
+        >
+          <span aria-hidden className="text-[64px] text-[var(--pumpkin)]">TRICK</span>
+          <span aria-hidden className="text-[28px] text-[var(--slime)]">or</span>
+          <span aria-hidden className="text-[64px] text-[var(--leaf-gold)]">TRIP</span>
         </h1>
         <p className="mt-2 text-lg text-[var(--color-text)]">할로윈, 어디서 놀까?</p>
         <p className="mt-1 text-sm text-[var(--color-text-muted)]">

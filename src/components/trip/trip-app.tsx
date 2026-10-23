@@ -46,12 +46,9 @@ export function TripApp() {
   return (
     <div
       className="min-h-dvh w-full"
-      style={{ backgroundImage: started ? "none" : "var(--trip-gradient)", backgroundColor: "var(--color-bg)", backgroundAttachment: "fixed" }}
+      style={{ backgroundColor: "var(--color-bg)" }}
     >
-      <header className="sticky top-0 z-20 mx-auto flex h-14 w-full max-w-[430px] items-center justify-between bg-[var(--color-bg)]/85 px-4 backdrop-blur">
-        <button type="button" onClick={() => { setHistory([]); setReply(null); }} className="font-black text-[var(--color-primary)]">
-          트릭 오어 트립
-        </button>
+      <header className="sticky top-0 z-20 mx-auto flex h-14 w-full max-w-[430px] items-center justify-end px-4">
         <Link href="/my-course" className="relative grid h-10 w-10 place-items-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface)]" aria-label={`내 할로윈 코스 (${fav.list.length}곳)`}>
           <Heart className="h-5 w-5" />
           {fav.list.length > 0 && (
