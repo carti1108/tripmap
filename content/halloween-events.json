@@ -1,0 +1,18 @@
+{
+  "_owner": "PO (신종원) — 할로윈 이벤트 큐레이션 시트 (PO-4). 형식은 src/lib/contracts/place.ts 의 HalloweenEvent.",
+  "_rules": "BR-002: startDate·endDate·sourceUrl 없으면 넣지 않는다. 매일 링크 점검(PO-6). 아래 예시 1건은 형식 안내용 가짜 데이터 — 실제 데이터로 교체할 것.",
+  "events": [
+    {
+      "id": "evt-example",
+      "title": "(예시) ○○ 할로윈 페스타",
+      "venueName": "(예시) ○○몰",
+      "address": "서울 ○○구 ○○로 1",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-31",
+      "sourceUrl": "https://example.com",
+      "audience": "all",
+      "scare": "low",
+      "note": "포토존·분장"
+    }
+  ]
+}

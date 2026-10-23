@@ -1,0 +1,17 @@
+# deps / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# env (키는 절대 커밋 금지)
+.env
+.env*.local
+
+# 개인 설정 — 각자 자기 역할을 적는 파일 (커밋 금지)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# OS
+.DS_Store
