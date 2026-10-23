@@ -1,0 +1,29 @@
+# 경로별 리뷰 담당 (ownership.json 과 같은 내용). 나중 줄이 이긴다.
+# TODO(PO): @PO_GITHUB_ID / @DESIGNER_GITHUB_ID / @DEV_A_GITHUB_ID 를 실제 GitHub 아이디로 바꾸기
+
+# 공용 설정 — 전원
+*                         @PO_GITHUB_ID @carti1108 @DEV_A_GITHUB_ID
+
+# PO
+/docs/                    @PO_GITHUB_ID
+/content/                 @PO_GITHUB_ID
+/README.md                @PO_GITHUB_ID
+
+# 디자이너
+/design/                  @DESIGNER_GITHUB_ID
+/public/characters/       @DESIGNER_GITHUB_ID
+
+# 개발자 A (프론트·지도)
+/src/app/                 @DEV_A_GITHUB_ID
+/src/components/          @DEV_A_GITHUB_ID
+/src/lib/client/          @DEV_A_GITHUB_ID
+
+# 개발자 B (서버·Gemini·카카오 REST)
+/src/app/api/             @carti1108
+/src/lib/server/          @carti1108
+/src/mocks/               @carti1108
+# 공유 계약: B 소유지만 A도 반드시 리뷰
+/src/lib/contracts/       @carti1108 @DEV_A_GITHUB_ID
+
+# 원본 보존 파일
+/src/components/ui/ai-prompt-box.tsx  @PO_GITHUB_ID @DEV_A_GITHUB_ID

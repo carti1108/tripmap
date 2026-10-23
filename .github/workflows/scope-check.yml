@@ -1,0 +1,27 @@
+name: scope-check
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 역할 범위 검사
+        run: node scripts/check-scope.mjs --base origin/${{ github.base_ref }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build

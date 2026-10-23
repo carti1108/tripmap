@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# lockfile은 손으로 병합하지 않는다: 충돌 나면 main 것을 받고 npm install 다시 실행
+package-lock.json merge=binary linguist-generated=true

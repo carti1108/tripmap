@@ -1,0 +1,46 @@
+/**
+ * 디자인 토큰 — 소유: 디자이너. 개발자는 HEX를 직접 쓰지 말고 이 변수만 쓴다.
+ * 출처: PO 제공 이미지 3종에서 픽셀 추출 (PRD v0.3 §7)
+ *   - 할로윈 포스터(밤·호박·슬라임), 낙엽 팔레트, 가을 컬러셋(cream·terracota 등)
+ */
+:root {
+  /* 밤 (포스터) */
+  --night: #1D182E;
+  --dusk: #393257;
+  --fog: #574F82;
+  --pumpkin: #F36523;
+  --candy: #FA9221;
+  --moon: #DD841E;
+  --slime: #8EBA41;
+
+  /* 가을 낙엽 */
+  --parchment: #F2D4B8;
+  --cream: #EAD2B0;
+  --terracota: #963417;
+  --leaf-red: #92271E;
+  --leaf-gold: #FEB020;
+  --leaf-olive: #8A8D65;
+  --deep-teal: #183534;
+  --maroon: #66312A;
+
+  /* 역할 */
+  --color-bg: var(--night);
+  --color-surface: var(--dusk);
+  --color-border: var(--fog);
+  --color-text: var(--parchment);
+  --color-text-muted: var(--cream);
+  --color-primary: var(--pumpkin);
+  --color-kind-spooky: var(--pumpkin);
+  --color-kind-event: var(--candy);
+  --color-kind-food: var(--slime);
+  --color-kind-cafe: var(--leaf-gold);
+  --color-scare-high: var(--leaf-red);
+  --color-chatbar-bg: var(--dusk);
+  --color-chatbar-border: var(--fog);
+  --color-chatbar-text: var(--parchment);
+
+  /* 배경: "떠오르는 달" — 데모 radial-gradient 구조 유지, 색만 교체 (OQ-002 확정 전 시안) */
+  --trip-gradient: radial-gradient(125% 125% at 50% 101%,
+    #F36523 10.5%, #FA9221 16%, #DD841E 17.5%, #8A4D30 25%,
+    #574F82 40%, #393257 65%, #1D182E 100%);
+}

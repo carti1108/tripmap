@@ -1,0 +1,46 @@
+{
+  "_doc": "경로 소유표 — 한 경로의 주인은 한 명. 가장 긴 경로가 이긴다 (예: src/app/api/ 는 be, 나머지 src/app/ 은 fe). 수정은 chore/ 브랜치 + 전원 리뷰.",
+  "roles": {
+    "po": {
+      "title": "PO",
+      "person": "신종원",
+      "github": "@PO_GITHUB_ID",
+      "branch": "po/",
+      "doc": "docs/roles/po.md",
+      "paths": ["docs/", "content/", "README.md"]
+    },
+    "design": {
+      "title": "디자이너",
+      "person": "디자이너",
+      "github": "@DESIGNER_GITHUB_ID",
+      "branch": "ds/",
+      "doc": "docs/roles/designer.md",
+      "paths": ["design/", "public/characters/"]
+    },
+    "fe": {
+      "title": "개발자 A — 프론트엔드·지도",
+      "person": "개발자 A",
+      "github": "@DEV_A_GITHUB_ID",
+      "branch": "fe/",
+      "doc": "docs/roles/dev-a-frontend.md",
+      "paths": ["src/app/", "src/components/", "src/lib/client/", "public/"]
+    },
+    "be": {
+      "title": "개발자 B — 서버·AI(Gemini)·카카오 REST",
+      "person": "carti1108",
+      "github": "@carti1108",
+      "branch": "be/",
+      "doc": "docs/roles/dev-b-backend.md",
+      "paths": ["src/app/api/", "src/lib/server/", "src/lib/contracts/", "src/mocks/"]
+    }
+  },
+  "shared": {
+    "branch": "chore/",
+    "paths": [
+      "package.json", "package-lock.json", "tsconfig.json", "next.config.ts", "postcss.config.mjs",
+      ".gitignore", ".gitattributes", ".env.example", ".github/", ".claude/", "scripts/",
+      "ownership.json", "CLAUDE.md"
+    ]
+  },
+  "frozen": ["src/components/ui/ai-prompt-box.tsx"]
+}
