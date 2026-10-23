@@ -15,6 +15,7 @@ import {
   CROWD_NOTICE, SAFE_ONE_LINER, UNSAFE_PLACE_TEXT, isCrowdedArea, isKidSafeEvent,
   mentionsUnsafePlace, resolveScare, sanitizeOneLiner,
 } from "./policy";
+import { walkMinutes } from "./walk";
 
 const MAX_ITEMS = 6; // BR-004
 const MAX_STOPS = 4;
@@ -145,20 +146,23 @@ function buildItems(entries: Entry[], curation: Curation | null, intent: Intent)
 /** BR-004·006: 코스는 items 안의 2~4곳, 이벤트(혼잡 거리)는 1곳만 */
 function buildCourse(curation: Curation | null, items: Recommendation[]): Course | undefined {
   if (!curation?.course) return undefined;
-  const kindById = new Map(items.map((r) => [r.place.id, r.kind]));
-  const stopIds: string[] = [];
+  const byId = new Map(items.map((r) => [r.place.id, r]));
+  const stops: Recommendation[] = [];
   let hasEvent = false;
   for (const id of curation.course.stopIds) {
-    const kind = kindById.get(id);
-    if (!kind || stopIds.includes(id) || (kind === "event" && hasEvent)) continue;
-    hasEvent ||= kind === "event";
-    stopIds.push(id);
-    if (stopIds.length === MAX_STOPS) break;
+    const rec = byId.get(id);
+    if (!rec || stops.includes(rec) || (rec.kind === "event" && hasEvent)) continue;
+    hasEvent ||= rec.kind === "event";
+    stops.push(rec);
+    if (stops.length === MAX_STOPS) break;
   }
-  if (stopIds.length < MIN_STOPS) return undefined;
+  if (stops.length < MIN_STOPS) return undefined;
   return {
     title: curation.course.title,
-    stops: stopIds.map((placeId, i) => ({ order: i + 1, placeId })),
+    stops: stops.map((rec, i) => {
+      const minutes = i > 0 ? walkMinutes(stops[i - 1].place, rec.place) : undefined;
+      return { order: i + 1, placeId: rec.place.id, ...(minutes !== undefined && { walkMinutes: minutes }) };
+    }),
   };
 }
 
