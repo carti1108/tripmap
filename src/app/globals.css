@@ -2,3 +2,24 @@
 @import "../../design/tokens.css";
 
 html, body { background: var(--color-bg); color: var(--color-text); }
+
+/* 지도 마커 (FE-5) — 색은 --marker 에 종류별 토큰을 넣어 쓴다 */
+.trip-marker {
+  display: grid; place-items: center;
+  width: 28px; height: 28px; margin-bottom: 6px;
+  border-radius: 9999px;
+  background: var(--marker); border: 2px solid var(--night);
+  color: var(--night); font: 700 13px/1 system-ui, sans-serif;
+  cursor: pointer; transition: transform .15s ease;
+}
+.trip-marker:empty { width: 18px; height: 18px; }
+.trip-marker[data-selected="true"] { transform: scale(1.25); border-color: var(--parchment); }
+
+/* 로딩 유령 둥둥 (S5) */
+@keyframes trip-float { 50% { transform: translateY(-4px); } }
+.trip-float { animation: trip-float 1.6s ease-in-out infinite; }
+
+/* NFR-004: 움직임 줄이기 존중 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
